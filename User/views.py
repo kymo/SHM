@@ -75,3 +75,21 @@ def release(request):
         return RTR("release.html", {})
     else:
         return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+    
+def require(request):
+    """
+    require page and handle
+    """
+    if request.user.is_authenticated():
+        return RTR("require.html", {})
+    else:
+        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+    
+def news(request):
+    """
+    news page and handle
+    """
+    if request.user.is_authenticated():
+        return RTR("news.html", {})
+    else:
+        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})

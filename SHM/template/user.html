@@ -89,7 +89,9 @@
               <a href="#" class="navbar-link">{{user.nick_name}}</a>的账号
             </p>
             <ul class="nav">
-              <li class="active"><a href="/market">二手市场</a></li>
+              
+              <li><a href="/">首页</a></li>
+              <li><a href="/market">二手市场</a></li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">商品全部类别 <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -102,7 +104,7 @@
                         <li><a href="#">住房</a></li>
                         <li><a href="#">其他</a></li>
                   </ul>
-                  </li>
+              </li>
               <li><a href="/rules">交易规约</a></li>
               <li><a href="/contact">联系我们</a></li>
             </ul>
@@ -112,11 +114,19 @@
   </div>
   <div class = 'row'>
       <div class = 'span12 panel'>
-            <div class='top_panel' style = 'padding:19px;'>
-                <span class='active_span'><a href="/rules">浏览发现</a></span>
-                <span><a href="/contact">出售宝贝</a></span>
-                <span><a href="/contact">求购物品</a></span>
-                <span><a href="/contact">最新信息<span style='margin-left:1px;' class='badge badge-important'>2</span></a></span>
+            <div class='top_panel span6' style = 'padding:19px;'>
+                <span class='active_span'><a href="">浏览发现</a></span>
+                <span><a href="/release">发布宝贝</a></span>
+                <span><a href="/require">求购宝贝</a></span>
+                <span><a href="/news">最新信息<span style='margin-left:1px;' class='badge badge-important'>2</span></a></span>
+            </div>
+            
+            <div class = 'span4' style='padding:16px;'>
+                <form class="form-search" action='/search' method = 'POST'>
+                    
+                    <input type="text" style='width:200px;'>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
             </div>
         </div>
         <div class = 'container'>
