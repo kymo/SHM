@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/site_media/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+    }
+    .panel
+    {
+        width:100%;
+        height:60px;
+        margin-top:-20px;
+        background:#e5f5e2;
+        border:1px solid #ddd;
+    }
+    .top_panel
+    {
+        margin-left:100px;
+    }
+    .top_panel span
+    {
+        margin-left:20px;
+    }
+    .menu span
+    {
+        margin-left:20px;
+        font-size:12px;
+        margin-top:50px;
+    }
+    .pro-list
+    {
+        margin-top:10px;
+    }
+    .pro-infor
+    {
+        margin-left:30px;
+    }
+    .active_span
+    {
+        font-weight:bold;
+    }
+    </style>
+    <link href="/site_media/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#" style = 'font-family:微软雅黑,黑体;'>ZNU二手市场</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <a href="#" class="navbar-link">{{user.nick_name}}</a>的账号
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="/market">二手市场</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">商品全部类别 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                        <li class="active"><a href="#">书籍</a></li>
+                        <li><a href="#">代步</a></li>
+                        <li><a href="#">数码</a></li>
+                        <li><a href="#">服装</a></li>
+                        <li><a href="#">乐器</a></li>
+                        <li><a href="#">生活</a></li>
+                        <li><a href="#">住房</a></li>
+                        <li><a href="#">其他</a></li>
+                  </ul>
+                  </li>
+              <li><a href="/rules">交易规约</a></li>
+              <li><a href="/contact">联系我们</a></li>
+            </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+      </div>
+  </div>
+  <div class = 'row'>
+      <div class = 'span12 panel'>
+            <div class='top_panel' style = 'padding:19px;'>
+                <span class='active_span'><a href="/rules">浏览发现</a></span>
+                <span><a href="/contact">出售宝贝</a></span>
+                <span><a href="/contact">求购物品</a></span>
+                <span><a href="/contact">最新信息<span style='margin-left:1px;' class='badge badge-important'>2</span></a></span>
+            </div>
+        </div>
+        <div class = 'container'>
+            <div class = 'span12' style = 'border:0px solid #ddd;margin-top:30px;'>
+                <div class = 'span7'>
+                    <div class = 'span7 menu'>
+                        <span><a href='/release'>发布二手</a></span>
+                        <span><a href='/release'>发布求购</a></span>
+                    </div>
+                    <div class = 'span7 pro-list'>
+                        <div class = 'span6'  style='margin-top:20px;'>
+                        <div class = 'span1' style='width:40px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
+                            <div class = 'span5'>
+                                <span> Aron 发布物品:</span></div>
+                            <div class = 'span5' style = 'margin-left:30px;'>
+                                <div class = 'span2'>
+                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
+                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
+                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
+                                </div>
+                                <div class = 'span2'>
+                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
+                                        <img src='/site_media/img/pro1.jpg'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ='span5 pro-infor'>
+                                2013-11-20 20:20:30
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'span6' style='margin-top:20px;'>
+                        <div class = 'span1' style='width:40px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
+                            <div class = 'span5'>
+                                <span> Aron 发布物品:</span></div>
+                            <div class = 'span5 pro-infor'>
+                                <div class = 'span2'>
+                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
+                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
+                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
+                                </div>
+                                <div class = 'span2'>
+                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
+                                        <img src='/site_media/img/pro1.jpg'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ='span5 pro-infor'>
+                                2013-11-20 20:20:30
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = 'span6'  style='margin-top:20px;'>
+                        <div class = 'span1' style='width:40px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
+                            <div class = 'span5 pro-infor'>
+                                <span> Aron 发布物品:</span></div>
+                            <div class = 'span5 pro-infor'>
+                                <div class = 'span2'>
+                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
+                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
+                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
+                                </div>
+                                <div class = 'span2'>
+                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
+                                        <img src='/site_media/img/pro1.jpg'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ='span5 pro-infor'>
+                                2013-11-20 20:20:30
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = 'span3 well' style='width:300px;height:400px;'>
+                    广告曲
+                </div>
+            </div>
+        </div>
+  </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/site_media/js/jquery.js"></script>
+    <script src="/site_media/js/bootstrap-transition.js"></script>
+    <script src="/site_media/js/bootstrap-alert.js"></script>
+    <script src="/site_media/js/bootstrap-modal.js"></script>
+    <script src="/site_media/js/bootstrap-dropdown.js"></script>
+    <script src="/site_media/js/bootstrap-scrollspy.js"></script>
+    <script src="/site_media/js/bootstrap-tab.js"></script>
+    <script src="/site_media/js/bootstrap-tooltip.js"></script>
+    <script src="/site_media/js/bootstrap-popover.js"></script>
+    <script src="/site_media/js/bootstrap-button.js"></script>
+    <script src="/site_media/js/bootstrap-collapse.js"></script>
+    <script src="/site_media/js/bootstrap-carousel.js"></script>
+    <script src="/site_media/js/bootstrap-typeahead.js"></script>
+  </body>
+</html>

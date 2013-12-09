@@ -3,12 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response as RTR
 
-def home(request):
+def index(request):
     """
     home page for user request
     """
     return RTR('index.html', {})
-
 
 def rules(request):
     """

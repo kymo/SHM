@@ -5,21 +5,24 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 import settings
-from Index.views import home, rules, contact, market
-from User.views import release, login, register
+from Index.views import index, rules, contact, market
+from User.views import release, logins, register, home
 from Product.views import product_detail
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'SHM.views.home', name='home'),
     # url(r'^SHM/', include('SHM.foo.urls')),
-    url(r'^$', home),
+    url(r'^$', index),
     url(r'^rules$', rules),
     url(r'^contact$', contact),
     url(r'^market$', market),
     url(r'^product/(?P<pid>\d+)$', product_detail),
     url(r'^release$', release),
-    url(r'^login$', login),
+    url(r'^login$', logins),
     url(r'^register$', register),
+    
+    #user personal page
+    url(r'^user/(?P<nid>\d+)$', home),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
