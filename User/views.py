@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response as RTR
 from django.template import RequestContext as RC
 from models import Account
+from Product.models import ProductToSell
 from django.contrib.auth import authenticate, login, logout
 #TODO user ajax authtication for register
 
@@ -72,14 +73,30 @@ def release(request):
     release page and release handle
     """
     #TODO handle the request from the client
+    
     if request.user.is_authenticated():
-        
-        return RTR("release.html", {})
+
+        if request.method == 'GET':
+            return RTR("release.html", {}, context_instance = RequestContext(request))
+        else:
+            product_params = {
+                'owner' : request.user,
+                'productname' : request.POST.get('productname', ''),
+                #'broadtype' : request.POST.get('broadtype', ''),
+                'image' : request.FILES.get('oriimage', None)
+                #'subtype' : request.POST.get('subtype', ''),
+                #'belongcampus' : request.POST.get('belongcampus', ''),
+                #'tradetype' : request.POST.get('tradetype', ''),
+                #'purity' : request.POST.get('purity', ''),
+                #'price' : request.POST.get('price', ''),
+                #'tradetitle' : request.POST.get('tradetitle', ''),
+                #'releasetime' : request.POST.get('releasetime', ''),
+                #'tradestatus' : request.POST.get('tradestatus', '')}
+                }
+            ProductToSell.create_product_to_sell(product_params)
+            return HttpResponse("add_product_to_sell.html!!!")    
     else:
-<<<<<<< HEAD
         return RTR("login.html", {'error' : 'è¯·å…ˆç™»å½•~'})
-=======
-        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
     
 def require(request):
     """
@@ -88,7 +105,7 @@ def require(request):
     if request.user.is_authenticated():
         return RTR("require.html", {})
     else:
-        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+        return RTR("login.html", {'error' : 'è¯·å…ˆç™»å½•~'})
     
 def news(request):
     """
@@ -97,5 +114,4 @@ def news(request):
     if request.user.is_authenticated():
         return RTR("news.html", {})
     else:
-        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
->>>>>>> 476c1076f6ee1a88accfc373638add5467d082c2
+        return RTR("login.html", {'error' : 'è¯·å…ˆç™»å½•~'})

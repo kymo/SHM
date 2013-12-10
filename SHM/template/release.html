@@ -134,14 +134,15 @@
             <div class='span12'>
                 <h3>发布宝贝</h3>
                 <form action='' method = 'POST'>
+			{% csrf_token %}
                   <fieldset>
                     <label>商品名称</label>
-                    <input type="text" placeholder="Type something…">
+                    <input type="text" name="productname">
                     
                     <label>商品照片</label>
-                    <input type="file" placeholder="Type something…">
+                    <input type="file" name="oriimage">
                     <label>类型</label>
-                    <select>
+                    <select name="sell_or_sent">
                         <option value = 'sell'>售卖</option>
                         <option value = 'rent'>租赁</option>
                     </select>
@@ -151,6 +152,10 @@
                             <option value = 'music'>音乐</option>
                         </select>
                         <select class='product_style'>
+                            <option value = 'big'>运动</option>
+                            <option value = 'music'>音乐</option>
+                        </select>
+						<select class='product_style'>
                             <option value = 'big'>运动</option>
                             <option value = 'music'>音乐</option>
                         </select>
