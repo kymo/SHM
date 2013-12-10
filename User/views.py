@@ -96,7 +96,7 @@ def release(request):
             ProductToSell.create_product_to_sell(product_params)
             return HttpResponse("add_product_to_sell.html!!!")    
     else:
-        return RTR("login.html", {'error' : '请先登录~'})
+        return RTR("login.html", {'error' : '璇峰厛鐧诲綍~'})
     
 def require(request):
     """
@@ -105,7 +105,7 @@ def require(request):
     if request.user.is_authenticated():
         return RTR("require.html", {})
     else:
-        return RTR("login.html", {'error' : '请先登录~'})
+        return RTR("login.html", {'error' : '璇峰厛鐧诲綍~'})
     
 def news(request):
     """
@@ -115,3 +115,11 @@ def news(request):
         return RTR("news.html", {})
     else:
         return RTR("login.html", {'error' : '请先登录~'})
+    
+def search(request):
+    """
+    search page and handle
+    """
+    return RTR('search.html', {})
+
+
