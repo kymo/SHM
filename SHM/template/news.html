@@ -61,6 +61,14 @@
     {
         font-weight:bold;
     }
+    .left-0
+    {
+        margin-left:0px;
+    }
+    .left-10
+    {
+        margin-left:10px;
+    }
     </style>
     <link href="/site_media/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -90,7 +98,6 @@
               <a href="#" class="navbar-link">{{user.nick_name}}</a>的账号
             </p>
             <ul class="nav">
-              
               <li><a href="/">首页</a></li>
               <li><a href="/market">二手市场</a></li>
               <li class="dropdown">
@@ -116,13 +123,11 @@
   <div class = 'row'>
        <div class = 'span12 panel'>
             <div class='top_panel span6' style = 'padding:19px;'>
-                <span ><a href="/user/3">浏览发现</a></span>
-                <span style='font-weight:bold;'><a href="/release">发布宝贝</a></span>
+                <span ><a href="/user/<F5>3">浏览发现</a></span>
+                <span ><a href="/release">发布宝贝</a></span>
                 <span><a href="/require">求购宝贝</a></span>
-                <span><a href="/news">最新信息<span style='margin-left:1px;' class='badge badge-important'>2</span></a></span>
+                <span  style='font-weight:bold;'><a href="/news">最新信息<span style='margin-left:1px;' class='badge badge-important'>2</span></a></span>
             </div>
-
-            
             <div class = 'span4' style='padding:16px;'>
                 <form class="form-search">
                     <input type="text" style='width:200px;'>
@@ -132,54 +137,73 @@
         </div>
         <div class = 'container' style='margin-top:40px;'>
             <div class='span12'>
-                <h3>发布宝贝</h3>
-                <form action='' method = 'POST'>
-                  <fieldset>
-                    <label>商品名称</label>
-                    <input type="text" placeholder="Type something…">
-                    
-                    <label>商品照片</label>
-                    <input type="file" placeholder="Type something…">
-                    <label>类型</label>
-                    <select>
-                        <option value = 'sell'>售卖</option>
-                        <option value = 'rent'>租赁</option>
-                    </select>
-                    <label>商品分类</label>
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
-                        </select>
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
-                        </select>
+                <h3>我的信箱</h3>
+            </div>
+            <div class = 'span12'>
+                <div class = 'span10 left-0'>
+                    <div class = 'span9 left-0'  style='border-bottom:1px solid #ddd;margin:10px;padding:10px;'>
+                    <span class="label label-success" style='font-weight:normal;padding:5px;'> 信息(1未读)</span>
+                    <span class='left-10'> <a href='#'> 未读信息 </a></span>
+                    <span class = 'left-10'> <a href='#'>  已读信息 </a></span>
+                    </div>
+                </div>
+                <div class = 'span10 left-0'>
+                    <div class = 'span9 left-0'  style='border-bottom:1px solid #ddd;margin:10px;padding:5px;'>
+                        <div class='span1' style = 'width:30px;height:30px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span8' style = 'font-size:12px;'>
+                            <p style = 'line-height:10px;'>系统邮件 <span style = 'float:right;'>2013-20-12</span></p>
+                            <p style = 'line-height:10px;'><a href='#'>Re:去西藏</a>
+                            <span style='float:right;'><input type = 'checkbox' ></span></p>
+                        </div>
                         
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
-                        </select>
-                    <label>交易地点</label>
-                    <select>
-                        <option>value</option>
-                        <option>value</option>
-                        <option>value</option>
-                    </select>    
-                    <label>物品详细说明</label>
-                    <textarea style='width:400px;height:100px;'></textarea>
-                    <label>联系方式</label>
-                    <input type = 'text' value='赵' class='span1'>同学 &
-                    电话:<input type='text' value='15071013512' class='span2'>
-                    <label></label>
-                    <button type="submit" class="btn">发布</button>
-                  </fieldset>
-                </form>
-                          
-                  
-      </div>
-      
+                    </div>
+                    <div class = 'span9 left-0'  style='border-bottom:1px solid #ddd;margin:10px;padding:5px;'>
+                        <div class='span1' style = 'width:30px;height:30px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span8' style = 'font-size:12px;'>
+                            <p style = 'line-height:10px;'>系统邮件 <span style = 'float:right;'>2013-20-12</span></p>
+                            <p style = 'line-height:10px;'><a href='#'>Re:去西藏</a>
+                            <span style='float:right;'><input type = 'checkbox' ></span></p>
+                        </div>
+                        
+                    </div>
+                    <div class = 'span9 left-0'  style='border-bottom:1px solid #ddd;margin:10px;padding:5px;'>
+                        <div class='span1' style = 'width:30px;height:30px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span8' style = 'font-size:12px;'>
+                            <p style = 'line-height:10px;'>系统邮件 <span style = 'float:right;'>2013-20-12</span></p>
+                            <p style = 'line-height:10px;'><a href='#'>Re:去西藏</a>
+                            <span style='float:right;'><input type = 'checkbox' ></span></p>
+                        </div>
+                        
+                    </div>
+                    <div class = 'span9 left-0'  style='border-bottom:1px solid #ddd;margin:10px;padding:5px;'>
+                        <div class='span1' style = 'width:30px;height:30px;'>
+                            <img src = '/site_media/img/av.jpg'>
+                        </div>
+                        <div class = 'span8' style = 'font-size:12px;'>
+                            <p style = 'line-height:10px;'>系统邮件 <span style = 'float:right;'>2013-20-12</span></p>
+                            <p style = 'line-height:10px;'><a href='#'>Re:去西藏</a>
+                            <span style='float:right;'><input type = 'checkbox' ></span></p>
+                        </div>
+                        
+                    </div>
+                    <div class = 'span9'>
+                        <div style = 'float:right;'>
+                            <button class = 'btn btn-danger'>选中项删除</button>
+                            <button class = 'btn btn-info'>已经读过</button>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-  </div>
+    </div>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

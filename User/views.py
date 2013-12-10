@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response as RTR
 from django.template import RequestContext as RC
 from models import Account
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 #TODO user ajax authtication for register
 
 def register(request):
@@ -40,7 +40,6 @@ def logins(request):
         password = request.POST.get('password', '')
         email = request.POST.get('email', '')
         user = authenticate(email = str(email), password = str(password))
-        print user.id
         if user is not None:
             login(request, user)
             #TODO redirect to the personal page
@@ -48,7 +47,10 @@ def logins(request):
         else:
             return HttpResponse("server error")
 
-
+def logouts(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+    
 def home(request, nid):
     """
     home page for user, user authentication needed
@@ -74,4 +76,26 @@ def release(request):
         
         return RTR("release.html", {})
     else:
+<<<<<<< HEAD
         return RTR("login.html", {'error' : 'è¯·å…ˆç™»å½•~'})
+=======
+        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+    
+def require(request):
+    """
+    require page and handle
+    """
+    if request.user.is_authenticated():
+        return RTR("require.html", {})
+    else:
+        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+    
+def news(request):
+    """
+    news page and handle
+    """
+    if request.user.is_authenticated():
+        return RTR("news.html", {})
+    else:
+        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+>>>>>>> 476c1076f6ee1a88accfc373638add5467d082c2

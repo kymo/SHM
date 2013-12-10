@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 import settings
 from Index.views import index, rules, contact, market
-from User.views import release, logins, register, home
+from User.views import release, logins, register, home, require, news, logouts
 from Product.views import product_detail
 urlpatterns = patterns('',
     # Examples:
@@ -16,13 +16,18 @@ urlpatterns = patterns('',
     url(r'^rules$', rules),
     url(r'^contact$', contact),
     url(r'^market$', market),
-    url(r'^product/(?P<pid>\d+)$', product_detail),
     url(r'^release$', release),
+    url(r'^require$', require),
+    url(r'^news$', news),
+    
+    url(r'^logout$', logouts),
     url(r'^login$', logins),
     url(r'^register$', register),
-    
     #user personal page
     url(r'^user/(?P<nid>\d+)$', home),
+    #product page
+    url(r'^product/(?P<pid>\d+)$', product_detail),
+    
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
