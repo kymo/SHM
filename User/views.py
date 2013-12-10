@@ -27,7 +27,7 @@ def register(request):
             'qq' : request.POST.get('qq', ''),
             'phone' : request.POST.get('phone', '')}
         Account.create_user(user_params)
-        return HttpResponse("register_ok.html", {})
+        return HttpResponse("register_ok.html!!!", {})
 
 def logins(request):
     """
@@ -74,4 +74,4 @@ def release(request):
         
         return RTR("release.html", {})
     else:
-        return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+        return RTR("login.html", {'error' : 'è¯·å…ˆç™»å½•~'})
