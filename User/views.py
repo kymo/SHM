@@ -95,3 +95,12 @@ def news(request):
         return RTR("news.html", {})
     else:
         return RTR("login.html", {'error' : 'ÇëÏÈµÇÂ¼~'})
+    
+def search(request):
+    """
+    search page and handle
+    """
+    return RTR('search.html', {})
+
+
+

@@ -6,8 +6,9 @@ from django.conf.urls import patterns, include, url
 
 import settings
 from Index.views import index, rules, contact, market
-from User.views import release, logins, register, home, require, news, logouts
+from User.views import release, logins, register, home, require, news, logouts, search
 from Product.views import product_detail
+from Manage.views import *
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'SHM.views.home', name='home'),
@@ -23,6 +24,11 @@ urlpatterns = patterns('',
     url(r'^logout$', logouts),
     url(r'^login$', logins),
     url(r'^register$', register),
+    url(r'^search$', search),
+    
+    #manage page
+    url(r'^manage$', manage),
+    url(r'^manage/product_to_buy$', manage_buy),
     #user personal page
     url(r'^user/(?P<nid>\d+)$', home),
     #product page
