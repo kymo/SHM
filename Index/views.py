@@ -7,7 +7,18 @@ def index(request):
     """
     home page for user request
     """
-    return RTR('index.html', {})
+    #TODO load news
+    #TODO load newest release
+    #TODO load newest deal
+    #TODO load newest require
+    cdic = {}
+    if request.user.is_authenticated():
+        cdic['is_self'] = True
+        print 'yes'
+        cdic['user'] = request.user
+    else:
+        cdic['is_self'] = False
+    return RTR('index.html', cdic, context_instance = RequestContext(request))
 
 def rules(request):
     """
@@ -29,5 +40,14 @@ def market(request):
     """
     #TODO user authentication
     #TODO get the products from db
-    return RTR('market.html', {})
+    t = request.GET.get('t', '')
+    if t == '':
+        t = 'b'
+    cdic = {'t' : t}
+    if request.user.is_authenticated():
+        cdic['is_self'] = True
+        cdic['user'] = request.user
+    else:
+        cdic['is_self'] = False
+    return RTR('market.html', cdic)
     

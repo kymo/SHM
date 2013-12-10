@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 import settings
 from Index.views import index, rules, contact, market
-from User.views import release, logins, register, home, require, news
+from User.views import release, logins, register, home, require, news, logouts
 from Product.views import product_detail
 urlpatterns = patterns('',
     # Examples:
@@ -16,14 +16,13 @@ urlpatterns = patterns('',
     url(r'^rules$', rules),
     url(r'^contact$', contact),
     url(r'^market$', market),
-    
     url(r'^release$', release),
     url(r'^require$', require),
     url(r'^news$', news),
     
+    url(r'^logout$', logouts),
     url(r'^login$', logins),
     url(r'^register$', register),
-    
     #user personal page
     url(r'^user/(?P<nid>\d+)$', home),
     #product page

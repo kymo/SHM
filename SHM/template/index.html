@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
+    <title>中南财经政法大学二手市场</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -292,7 +292,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+                                   
+    <link rel="shortcut icon" href="/site_media/img/icon.ico" />
   </head>
 
   <body>
@@ -313,27 +314,29 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">中南财经政法大学二手市场</a>
+            <a class="brand" href="#">
+                <img width=20 height=20 style='margin-right:10px;' src='/site_media/img/icon.png'>
+                <font style = 'color:#eee;'>中南财经政法大学二手市场</font>
+            </a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li  class="active"><a href="/">首页</a></li>
                 <li><a href="/market">二手市场</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">商品全部类别 <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                        <li class="active"><a href="#">书籍</a></li>
-                        <li><a href="#">代步</a></li>
-                        <li><a href="#">数码</a></li>
-                        <li><a href="#">服装</a></li>
-                        <li><a href="#">乐器</a></li>
-                        <li><a href="#">生活</a></li>
-                        <li><a href="#">住房</a></li>
-                        <li><a href="#">其他</a></li>
-                  </ul>
-                  </li>
                 <li><a href="/rules">交易规约</a></li>
                 <li><a href="/contact">联系我们</a></li>
+            
+                <!-- if user has been logined -->
+                {% if is_self %}
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aron<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/user/{{user.nid}}">个人主页</a></li>
+                          <li><a href="/logout">登出</a></li>
+                      </ul>
+                    </li>
+                {% endif %}
+                
                 <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
                 
                   
@@ -356,11 +359,11 @@
           <img src="/site_media/img/slide-01.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1></h1>
-              <p class="lead" style=' font-size:15px;font-family:微软雅黑,黑体;'>
+              <p class="lead">
                   二手书籍、二手自行车、二手乐器、二手手机、二手mp3哪里找？赶紧来二手集看看！！！
               </p>
               <a class="btn btn-primary" href="/register">马上注册</a>
+              <a class="btn btn-success" href="/register">登陆</a>
             </div>
           </div>
         </div>
@@ -368,9 +371,8 @@
           <img src="/site_media/img/slide-02.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Learn more</a>
+              <p class="lead">己所不欲，必须要给别人啦。</p>
+              <a class="btn btn-success" href="/release">我要发布！</a>
             </div>
           </div>
         </div>
@@ -378,9 +380,8 @@
           <img src="/site_media/img/slide-03.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+                <p class="lead">想要便宜而。。。。</p>
+              <a class="btn btn-info" href="/require">我要求购！</a>
             </div>
           </div>
         </div>
@@ -399,29 +400,30 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class = 'span12'>
+        <div class = 'span12' style='margin:0px;padding:0px;width:1000px;' >
             <div class = 'span6'>
                 <ul class="nav nav-pills">
-                    <li>
-                    <a href="#">书籍</a>
-                    </li>
-                    <li><a href="#">代步</a></li>
-                    <li><a href="#">数码</a></li>
-                    <li><a href="#">服装</a></li>
-                    <li><a href="#">乐器</a></li>
-                    <li><a href="#">生活</a></li>
-                    <li><a href="#">住房</a></li>
-                    <li><a href="#">其他</a></li>
+                    <li><a href="/market?t=b">书籍</a></li>
+                    <li><a href="/market?t=d">代步</a></li>
+                    <li><a href="/market?t=e">数码</a></li>
+                    <li><a href="/market?t=c">服装</a></li>
+                    <li><a href="/market?t=m">乐器</a></li>
+                    <li><a href="/market?t=l">生活</a></li>
+                    <li><a href="/market?t=h">住房</a></li>
+                    <li><a href="/market?t=o">其他</a></li>
                 </ul>
             </div>
-            <div class = 'span3'>
+            <div class = 'span6' style='margin-left:0px;'>
+                <div class = 'span3' style='margin:0px;'>
                 <form class="form-search">
                     <input type="text" style='width:120px;'>
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>
-          </div>
-          <div class = 'span2'>
-              <a href='/release' type="submit" style='float:right;' class="btn btn-danger">我要发布</a>
+                </div>
+                <div class='span3' style='margin-left:20px;'>
+                <a href='/release' type="submit" style= 'margin-left:13px;float:right;' class="btn btn-danger">我要发布</a>
+                <a href='/require' type="submit" style= 'float:right;' class="btn btn-info">我要求购</a>
+                </div>
           </div>
       </div>
 
