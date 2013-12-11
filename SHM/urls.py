@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -15,24 +16,28 @@ urlpatterns = patterns('',
     # url(r'^SHM/', include('SHM.foo.urls')),
     url(r'^$', index),
     url(r'^rules$', rules),
-    url(r'^contact$', contact),
-    url(r'^market$', market),
-    url(r'^release$', release),
-    url(r'^require$', require),
-    url(r'^news$', news),
-    
-    url(r'^logout$', logouts),
-    url(r'^login$', logins),
-    url(r'^register$', register),
-    url(r'^search$', search),
+    url(r'^contact$', contact),                    # 联系我们
+    url(r'^market$', market),                      # 二手市场
+    url(r'^release$', release),                    # 用户发布页面
+    url(r'^require$', require),                    # 用户求购页面
+    url(r'^news$', news),                          # 用户信息
+    url(r'^logout$', logouts),                     # 登出
+    url(r'^login$', logins),                       # 登陆
+    url(r'^register$', register),                  # 注册
+    url(r'^search$', search),                      # 查找
     
     #manage page
     url(r'^manage$', manage),
-    url(r'^manage/product_to_buy$', manage_buy),
+    url(r'^manage/product_to_buy$', manage_buy),   # 用户求购
+    url(r'^manage/product_to_sell$', manage_sell), # 用户需求
+    url(r'^manage/advice$', manage_advice),        # 用户建议
+    url(r'^manage/ad$', manage_ad),                # 广告管理
+    url(r'^manage/news$', manage_news),            # 新闻编辑
+    
     #user personal page
-    url(r'^user/(?P<nid>\d+)$', home),
-    #product page
-    url(r'^product/(?P<pid>\d+)$', product_detail),
+    url(r'^user/(?P<nid>\d+)$', home),             # 用户个人页面
+    #product page 
+    url(r'^product/(?P<pid>\d+)$', product_detail),# 产品介绍页面
     
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
