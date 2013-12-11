@@ -132,28 +132,28 @@
             <div class='span12'>
                 <h3>求购宝贝</h3>
                 <form action='' method = 'POST'>
+				{% csrf_token %}
                   <fieldset>
                     <label>商品名称</label>
-                    <input type="text" placeholder="Type something…">
+                    <input type="text" name="productname">
                     
                     <label>类型</label>
-                    <select>
+                    <select name="tradetype">
                         <option value = 'sell'>售卖</option>
                         <option value = 'rent'>租赁</option>
                     </select>
-                    <label>商品分类</label>
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
+					
+                    <label><font style='color:red'>*</font>商品分类</label>
+                    <select class='product_style' name='broadtype' id = 'first_type'>
+                        <option value = '-1'>请选择</option>
+                            <option value = 'd'>代步</option>
+                            <option value = 'b'>自行车</option>
+                            <option value = 'e'>数码</option>
+                            <option value = 'c'>服装</option>
+                            <option value = 'm'>音乐</option>
+                            <option value = 'l'>生活</option>
                         </select>
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
-                        </select>
-                        
-                        <select class='product_style'>
-                            <option value = 'big'>运动</option>
-                            <option value = 'music'>音乐</option>
+                        <select class='product_style' name = 'subtype' id = 'second_type'>
                         </select>
                    
                     <label>联系方式</label>
@@ -185,6 +185,20 @@
     <script src="/site_media/js/bootstrap-collapse.js"></script>
     <script src="/site_media/js/bootstrap-carousel.js"></script>
     <script src="/site_media/js/bootstrap-typeahead.js"></script>
+    <script src="/site_media/js/product_type.js"></script>
+    <script>
+        $(document).ready(
+            function()
+            {
+                $('#first_type').change(
+                    function()
+                    {
+                        onchange('#first_type', '#second_type');
+                    }
+                );
+            }
+        );
+    </script>
   </body>
 </html>
 

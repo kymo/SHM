@@ -89,16 +89,7 @@ class ProductToBuy(Model):
     product_name = CharField(max_length = 128, null = False)
     broad_type = CharField(max_length = 128, null = False)
     sub_type = CharField(max_length = 32, null = True)
-    belong_campus = CharField(max_length = 128, null = False)
-    trade_type = CharField(max_length = 32, null = False)
-    purity = CharField(max_length = 32, null = False)
-    big_img = ImageField(upload_to = 'big_img', height_field = 1024, width_field = 1024, null = False)
-    small_img = ImageField(upload_to = 'small_img', height_field = 512, width_field = 512, null = False)
-    price = CharField(max_length = 32, null = False)
-    trade_title = CharField(max_length = 64, null = False)
-    trade_detail = CharField(max_length = 256, null = False)
     release_time = DateTimeField(null = True)
-    trade_status = CharField(max_length = 32, null = False)
     nid = CharField(max_length = 64, null = True)
     
     @classmethod
@@ -107,25 +98,17 @@ class ProductToBuy(Model):
         create a product and save into db
         """
         try:
-            product_to_sell = ProductToSell( owner = product_params['owner'],
+            product_to_buy = ProductToBuy( owner = product_params['owner'],
+                    product_name = product_params['productname'],
                     broad_type = product_params['broadtype'],
                     sub_type = product_params['subtype'],
-                    belong_campus = product_params['belongcampus'],
-                    trade_type = product_params['tradetype'],
-                    purity = product_params['purity'],
-                    #big_img = product_params['bigimg'],
-                    #small_img = product_params['smallimg'],
-                    price = product_params['price'],
-                    trade_title = product_params['tradetitle'],
-                    trade_detail = product_params['tradedetail'],
                     release_time = product_params['releasetime'],
-                    trade_status = product_params['tradestatus'],
-                    comment = product_params['comment'])
-            product_to_sell.save()
-            nid = create_nid(user.id)
-            user.nid = nid
-            user.save()
-            return product
+                    )
+            product_to_buy.save()
+            nid = create_nid(product_to_buy.id)
+            product_to_buy.nid = nid
+            product_to_buy.save()
+            return product_to_buy
         except Exception,e:
             print e
             return None

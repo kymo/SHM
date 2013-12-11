@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response as RTR
 from django.template import RequestContext as RC
 from models import Account
-from Product.models import ProductToSell
+from Product.models import ProductToSell, ProductToBuy
 from django.contrib.auth import authenticate, login, logout
 import datetime
 #TODO user ajax authtication for register
@@ -104,7 +104,20 @@ def require(request):
     require page and handle
     """
     if request.user.is_authenticated():
-        return RTR("require.html", {})
+        if request.method == 'GET':
+            return RTR("require.html", {}, context_instance = RequestContext(request))
+        else:
+            product_params = {
+                'owner' : request.user,
+                'productname' : request.POST.get('productname', ''),
+                'broadtype' : request.POST.get('broadtype', ''),
+                'subtype' : request.POST.get('subtype', ''),
+                'releasetime' : datetime.datetime.now(),
+                }
+            print product_params
+            ProductToBuy.create_product_to_buy(product_params)
+            return HttpResponse("add_product_to_buy.html!!!")    
+
     else:
         return RTR("login.html", {'error' : '璇峰厛鐧诲綍~'})
     
