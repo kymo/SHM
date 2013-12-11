@@ -30,9 +30,6 @@ class ProductToSell(Model):
         try:
             #change the size of the image 
             big_img, small_img = change_img_size(product_params['image'])
-            print big_img, small_img
-            #big_img, small_img = product_params['image'], product_params['image']
-            print type(big_img)
             product_to_sell = ProductToSell( owner = product_params['owner'],
                     product_name = product_params['productname'],
                     broad_type = product_params['broadtype'],
@@ -66,9 +63,14 @@ class ProductToSell(Model):
     
     @classmethod
     def by_type(cls, types, page):
-        total = cls.objects.count()
+        if types == 'a':
+            total = cls.objects.count()
+        else:
+            total = cls.objects.filter(broad_type = types).count()
         if page == 0:
-            page == 1
+            page = 1
+        if total == 0:
+            return None, 1
         tot_page_num = (total - 1) / 12 + 1
         if page > tot_page_num:
             page = tot_page_num
@@ -76,7 +78,7 @@ class ProductToSell(Model):
             products = cls.objects.all()[(page - 1) * 12 : 12 * page]
         else:
             products = cls.objects.filter(broad_type = types)[(page - 1) * 12 : 12 * page]
-        return products
+        return products, page
         
             
 

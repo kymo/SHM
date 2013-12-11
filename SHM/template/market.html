@@ -392,7 +392,8 @@
             </div>
              <div class = 'span5' style='margin-left:0px;width:420px;'>
                 <div class = 'span3' style='margin:0px;'>
-                <form class="form-search">
+                    <form class="form-search" action='/search' method = 'post'>
+                        {% csrf_token %}
                     <input type="text" style='width:120px;'>
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>
@@ -410,15 +411,7 @@
                       <li class="span2">
                       <div class="thumbnail">
                           <img alt="" src = '/upload/{{item.big_img.url}}'>
-                          <h5> {{item.product_name}} </h5>
-                          <p> {{item.belong_campus}} <font color=red style='float:right;'>{{item.price}}</font></p>
-                        </div>
-                      </li>
-                  {% endfor %} {% for item in products %}
-                      <li class="span2">
-                      <div class="thumbnail">
-                          <img alt="" src = '/upload/{{item.big_img.url}}'>
-                          <h5> {{item.product_name}} </h5>
+                          <h5><a href='/product/{{item.id}}'> {{item.product_name}}</a> </h5>
                           <p> {{item.belong_campus}} <font color=red style='float:right;'>{{item.price}}</font></p>
                         </div>
                       </li>
@@ -426,13 +419,9 @@
             </ul>
             <div class="pagination pagination-centered">
                 <ul>
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li class=""><a href="#">2</a></li>
-                    <li class=""><a href="#">3</a></li>
-                    <li class=""><a href="#">4</a></li>
-                    <li class=""><a href="#">5</a></li>
-                    <li class=""><a href="#">&raquo;</a></li>
+                    <li ><a href="/market?t={{t}}&p={{bef_page}}">&laquo;</a></li>
+                    <li class="active"><a href="">{{page}}</a></li>
+                    <li class=""><a href="/market?t={{t}}&p={{nxt_page}}">&raquo;</a></li>
                 </ul>
             </div>
             

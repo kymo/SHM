@@ -50,8 +50,11 @@ def market(request):
         
     else:
         cdic['is_self'] = False
-    products = ProductToSell.by_type(t, int(p))
+    products, page = ProductToSell.by_type(t, int(p))
     cdic['products'] = products
-    print products
-    return RTR('market.html', cdic)
+    cdic['bef_page'] = page - 1 if page > 0 else 1
+    cdic['t'] = t
+    cdic['page'] = page
+    cdic['nxt_page'] = page + 1
+    return RTR('market.html', cdic, context_instance = RequestContext(request))
     

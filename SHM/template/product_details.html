@@ -55,6 +55,10 @@
             font-size:12px;
             color:#666;
         }
+        .same_pro p
+        {
+            line-height:12px;
+        }
     </style>
     <link href="/site_media/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -94,32 +98,33 @@
           <div class = 'span6'>
             <div class='span6' style='margin-left:0px;'>
               <div class='span2' style='width:100px;'>
-                  <img src='/site_media/img/pro1.jpg'>
+                  <img src='/upload/{{product.big_img.url}}'>
               </div>
               <div class='span4' style='padding:4px;'>
                   <p class='intro'>
-                    <span class='left_tip'>名称</span>
-                    <span> 洗衣机 </span>
+                  <span class='left_tip'>名称</span>
+                  
+                    <span> {{product.product_name}} </span>
                   </p>
                   <p class='intro'>
                   <span class='left_tip'>交易地点</span>
-                  <span> 南湖校区 </span>
+                  <span> {{product.belong_campus}} </span>
                   </p>
                   <p class='intro'>
                   <span class='left_tip'>发布时间</span>
-                  <span>2013-11-20 </span>
+                  <span>{{product.release_time|date:'Y-m-d H:i:s'}} </span>
                   </p>
                   <p class='intro'>
                   <span class='left_tip'>手机</span>
-                  <span> 15071013512 </span>
+                  <span>{{product.owner.phone}}</span>
                   </p>
                   <p class='intro'>
                   <span class='left_tip'>QQ</span>
-                  <span> 412062385 </span>
+                  <span>{{product.owner.qq}} </span>
                   </p>
                   <p class='intro'>
                   <span class='left_tip'>发布者</span>
-                  <span> Aron </span>
+                  <span> {{product.owner.nick_name}}</span>
                   </p>
                   <p class = 'intro'>
                   <span class = 'left_tip'> 浏览次数 </span>
@@ -129,7 +134,8 @@
             </div>
             <div class  = 'span7'>
               <div class = 'span6' style='margin-left:0px;'>
-                  <span>| <font style='color:#825d5b;font-weight:bold;'>物品信息</font> |</span>你好思考副教授了空间费卢卡斯经费
+                  <span>| <font style='color:#825d5b;font-weight:bold;'>物品信息</font> |</span>
+                  {{product.trade_detail}}
               </div>
               <div class = 'span6' style = 'margin-left:0px;'>
                   
@@ -146,8 +152,7 @@
               </div>
               <div class = 'span6' style = 'margin-left:0px;margin-top:30px;'>
                 <form>
-                    <textarea type="text" style='width:400px;height:100px;' placeholder="Type something…">
-                    </textarea></br>
+                    <textarea type="text" style='width:400px;height:100px;' placeholder="Type something…"></textarea></br>
                     <input type="submit" class="btn" value='评论'>
                     
                 </form>
@@ -156,8 +161,19 @@
               
           </div>
             </div>
-            <div class = 'span3'>
-                相似物品
+            <div class = 'span4'>
+                <div class='span4'><h5>相似物品</h5></div>
+                {% for item in same_products %}
+                <div class = 'span3' style='margin-left:0px;margin-top:10px;border-bottom:1px dashed #ddd;padding:5px;'>
+                    <div class = 'span1'style='width:40px;border:1px solid #ddd;margin-left:0px;'>
+                        <img width=40 src = '/upload/{{item.big_img.url}}'>
+                    </div>
+                    <div class ='span1 same_pro' style='margin-left:10px;'>
+                        <p> <a href='/product/{{item.id}}'>{{item.product_name}}</a></p>
+                        <p> {{item.owner.name}}  ${{item.price}} </p>
+                    </div>
+                </div>
+                {% endfor %}
           </div>
       </div>
       
