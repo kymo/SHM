@@ -7,6 +7,7 @@ from django.template import RequestContext as RC
 from models import Account
 from Product.models import ProductToSell
 from django.contrib.auth import authenticate, login, logout
+import datetime
 #TODO user ajax authtication for register
 
 def register(request):
@@ -75,24 +76,24 @@ def release(request):
     #TODO handle the request from the client
     
     if request.user.is_authenticated():
-
         if request.method == 'GET':
             return RTR("release.html", {}, context_instance = RequestContext(request))
         else:
             product_params = {
                 'owner' : request.user,
                 'productname' : request.POST.get('productname', ''),
-                #'broadtype' : request.POST.get('broadtype', ''),
-                'image' : request.FILES.get('oriimage', None)
-                #'subtype' : request.POST.get('subtype', ''),
-                #'belongcampus' : request.POST.get('belongcampus', ''),
-                #'tradetype' : request.POST.get('tradetype', ''),
-                #'purity' : request.POST.get('purity', ''),
-                #'price' : request.POST.get('price', ''),
-                #'tradetitle' : request.POST.get('tradetitle', ''),
-                #'releasetime' : request.POST.get('releasetime', ''),
-                #'tradestatus' : request.POST.get('tradestatus', '')}
+                'broadtype' : request.POST.get('broadtype', ''),
+                'image' : request.FILES.get('image'),
+                'subtype' : request.POST.get('subtype', ''),
+                'belongcampus' : request.POST.get('belongcampus', ''),
+                'tradetype' : request.POST.get('tradetype', ''),
+                'purity' : request.POST.get('purity', ''),
+                'price' : request.POST.get('price', ''),
+                'tradetitle' : request.POST.get('productname', ''),
+                'tradedetail' : request.POST.get('tradedetail', ''),
+                'releasetime' : datetime.datetime.now(),
                 }
+            print product_params
             ProductToSell.create_product_to_sell(product_params)
             return HttpResponse("add_product_to_sell.html!!!")    
     else:

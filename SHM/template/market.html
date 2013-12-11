@@ -375,9 +375,10 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class = 'span12'>
-            <div class = 'span6'>
+            <div class = 'span7' style='margin-left:0px;width:500px;'>
                 <ul class="nav nav-pills">
 
+                    <li id = 't_a'><a href="/market">全部</a></li>
                     <li id = 't_b'><a href="/market?t=b">书籍</a></li>
                         <li id = 't_d' ><a href="/market?t=d">代步</a></li>
                         <li id = 't_e'><a href="/market?t=e">数码</a></li>
@@ -389,107 +390,39 @@
                    
                 </ul>
             </div>
-             <div class = 'span6' style='margin-left:0px;'>
+             <div class = 'span5' style='margin-left:0px;width:420px;'>
                 <div class = 'span3' style='margin:0px;'>
                 <form class="form-search">
                     <input type="text" style='width:120px;'>
                     <button type="submit" class="btn btn-success">Search</button>
                 </form>
                 </div>
-                <div class='span3' style='margin-left:20px;'>
+                <div class='span3' style='margin-left:0px;width:180px;'>
                 <a href='/release' type="submit" style= 'margin-left:13px;float:right;' class="btn btn-danger">我要发布</a>
                 <a href='/require' type="submit" style= 'float:right;' class="btn btn-info">我要求购</a>
                 </div>
           </div>
         </div>
         <div class = 'span12'>
-          <div class = 'span8'>
-            <ul class="thumbnails">
-              <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                  <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-              </li>
-              <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/300x200" alt="" src = '/site_media/img/pro1.png'>
-                  <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                  <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                  <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                  <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-                </li>
-                <li class="span2">
-                <div class="thumbnail">
-                  <img data-src="holder.js/200x100" alt="" src = '/site_media/img/pro1.png'>
-                 <h5>小天鹅洗衣机</h5>
-                  <p>南湖  <font color=red style='float:right;'>5</font></p>
-                </div>
-              </li>
+          <div class = 'span8' >
+              <ul class="thumbnails" style='height:630px'>
+                  {% for item in products %}
+                      <li class="span2">
+                      <div class="thumbnail">
+                          <img alt="" src = '/upload/{{item.big_img.url}}'>
+                          <h5> {{item.product_name}} </h5>
+                          <p> {{item.belong_campus}} <font color=red style='float:right;'>{{item.price}}</font></p>
+                        </div>
+                      </li>
+                  {% endfor %} {% for item in products %}
+                      <li class="span2">
+                      <div class="thumbnail">
+                          <img alt="" src = '/upload/{{item.big_img.url}}'>
+                          <h5> {{item.product_name}} </h5>
+                          <p> {{item.belong_campus}} <font color=red style='float:right;'>{{item.price}}</font></p>
+                        </div>
+                      </li>
+                  {% endfor %}
             </ul>
             <div class="pagination pagination-centered">
                 <ul>
@@ -555,6 +488,6 @@
         })
       }(window.jQuery)
     </script>
-    <script src="../assets/js/holder/holder.js"></script>
+    <script src="/site_media/js/holder.js"></script>
   </body>
 </html>

@@ -2,6 +2,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response as RTR
+from Product.models import ProductToSell
 
 def index(request):
     """
@@ -40,14 +41,17 @@ def market(request):
     """
     #TODO user authentication
     #TODO get the products from db
-    t = request.GET.get('t', '')
-    if t == '':
-        t = 'b'
+    t = request.GET.get('t', 'a')
+    p = request.GET.get('p', '1')
     cdic = {'t' : t}
     if request.user.is_authenticated():
         cdic['is_self'] = True
         cdic['user'] = request.user
+        
     else:
         cdic['is_self'] = False
+    products = ProductToSell.by_type(t, int(p))
+    cdic['products'] = products
+    print products
     return RTR('market.html', cdic)
     
