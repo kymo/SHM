@@ -7,7 +7,7 @@ from django.conf.urls import patterns, include, url
 
 import settings
 from Index.views import index, rules, contact, market
-from User.views import release, logins, register, home, require, news, logouts, search
+from User.views import release, logins, register, home, require, news, logouts, search, home_require, home_release
 from Product.views import product_detail
 from Manage.views import *
 urlpatterns = patterns('',
@@ -16,28 +16,30 @@ urlpatterns = patterns('',
     # url(r'^SHM/', include('SHM.foo.urls')),
     url(r'^$', index),
     url(r'^rules$', rules),
-    url(r'^contact$', contact),                    # ÁªÏµÎÒÃÇ
-    url(r'^market$', market),                      # ¶şÊÖÊĞ³¡
-    url(r'^release$', release),                    # ÓÃ»§·¢²¼Ò³Ãæ
-    url(r'^require$', require),                    # ÓÃ»§Çó¹ºÒ³Ãæ
-    url(r'^news$', news),                          # ÓÃ»§ĞÅÏ¢
-    url(r'^logout$', logouts),                     # µÇ³ö
-    url(r'^login$', logins),                       # µÇÂ½
-    url(r'^register$', register),                  # ×¢²á
-    url(r'^search$', search),                      # ²éÕÒ
+    url(r'^contact$', contact),                    # è”ç³»æˆ‘ä»¬
+    url(r'^market$', market),                      # äºŒæ‰‹å¸‚åœº
+    url(r'^release$', release),                    # ç”¨æˆ·å‘å¸ƒé¡µé¢
+    url(r'^require$', require),                    # ç”¨æˆ·æ±‚è´­é¡µé¢
+    url(r'^news$', news),                          # ç”¨æˆ·ä¿¡æ¯
+    url(r'^logout$', logouts),                     # ç™»å‡º
+    url(r'^login$', logins),                       # ç™»é™†
+    url(r'^register$', register),                  # æ³¨å†Œ
+    url(r'^search$', search),                      # æŸ¥æ‰¾
     
     #manage page
     url(r'^manage$', manage),
-    url(r'^manage/product_to_buy$', manage_buy),   # ÓÃ»§Çó¹º
-    url(r'^manage/product_to_sell$', manage_sell), # ÓÃ»§ĞèÇó
-    url(r'^manage/advice$', manage_advice),        # ÓÃ»§½¨Òé
-    url(r'^manage/ad$', manage_ad),                # ¹ã¸æ¹ÜÀí
-    url(r'^manage/news$', manage_news),            # ĞÂÎÅ±à¼­
+    url(r'^manage/product_to_buy$', manage_buy),   # ç”¨æˆ·æ±‚è´­
+    url(r'^manage/product_to_sell$', manage_sell), # ç”¨æˆ·éœ€æ±‚
+    url(r'^manage/advice$', manage_advice),        # ç”¨æˆ·å»ºè®®
+    url(r'^manage/ad$', manage_ad),                # å¹¿å‘Šç®¡ç†
+    url(r'^manage/news$', manage_news),            # æ–°é—»ç¼–è¾‘
     
     #user personal page
-    url(r'^user/(?P<nid>\d+)$', home),             # ÓÃ»§¸öÈËÒ³Ãæ
-    #product page 
-    url(r'^product/(?P<pid>\d+)$', product_detail),# ²úÆ·½éÉÜÒ³Ãæ
+    url(r'^user/(?P<nid>\d+)$', home),             # ç”¨æˆ·ä¸ªäººé¡µé¢product/(?P<pid>\d+)$', product_detail),# äº§å“ä»‹ç»é¡µé¢    
+    #user personal page
+    url(r'^user/(?P<nid>\d+)/release$', home_release),             # ç”¨æˆ·ä¸ªäººé¡µé¢product/(?P<pid>\d+)$', product_detail),# äº§å“ä»‹ç»é¡µé¢    
+    #user personal page
+    url(r'^user/(?P<nid>\d+)/require$', home_require),             # ç”¨æˆ·ä¸ªäººé¡µé¢product/(?P<pid>\d+)$', product_detail),# äº§å“ä»‹ç»é¡µé¢
     
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

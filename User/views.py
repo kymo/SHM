@@ -64,6 +64,38 @@ def home(request, nid):
         is_self = True if nid == request.user.nid else False
         cdic = {'user' : user,
                 'is_self' : is_self}
+        products = ProductToSell.latest_product_to_show()
+        cdic['products'] = reversed(products)
+        return RTR('user.html', cdic)
+
+def home_release(request, nid):
+    """
+    home page for user, user authentication needed
+    """
+    if not request.user.is_authenticated:                   # need login
+        return HttpResponseRedirect('/register')
+    else:
+        user = Account.by_nid(nid)
+        is_self = True if nid == request.user.nid else False
+        cdic = {'user' : user,
+                'is_self' : is_self}
+        products = ProductToSell.latest_product_to_show()
+        cdic['products'] = reversed(products)
+        return RTR('user.html', cdic)
+
+def home_require(request, nid):
+    """
+    home page for user, user authentication needed
+    """
+    if not request.user.is_authenticated:                   # need login
+        return HttpResponseRedirect('/register')
+    else:
+        user = Account.by_nid(nid)
+        is_self = True if nid == request.user.nid else False
+        cdic = {'user' : user,
+                'is_self' : is_self}
+        products = ProductToBuy.latest_product_to_show()
+        cdic['products'] = reversed(products)
         return RTR('user.html', cdic)
         
         
@@ -110,6 +142,7 @@ def require(request):
             product_params = {
                 'owner' : request.user,
                 'productname' : request.POST.get('productname', ''),
+                'tradetype' : request.POST.get('tradetype', ''),
                 'broadtype' : request.POST.get('broadtype', ''),
                 'subtype' : request.POST.get('subtype', ''),
                 'releasetime' : datetime.datetime.now(),

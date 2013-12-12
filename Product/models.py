@@ -54,12 +54,23 @@ class ProductToSell(Model):
             return None
 
     @classmethod
+    def latest_product_to_show(cls):
+        return cls.objects.order_by('release_time').all()
+    
+    @classmethod
     def by_nid(cls, nid):
         try:
             user = cls.objects.get(nid = nid)
         except:
             return None
         return user
+    
+    @classmethod
+    def delete_product_to_buy(cls, nid):
+        try:
+            cls.objects.get(nid = nid).delete()
+        except:
+            return None
     
     @classmethod
     def by_type(cls, types, page):
@@ -89,6 +100,7 @@ class ProductToSell(Model):
 class ProductToBuy(Model):
     owner = ForeignKey( Account, related_name = 'person_product_to_buy')
     product_name = CharField(max_length = 128, null = False)
+    trade_type = CharField(max_length = 32, null = False)
     broad_type = CharField(max_length = 128, null = False)
     sub_type = CharField(max_length = 32, null = True)
     release_time = DateTimeField(null = True)
@@ -103,6 +115,7 @@ class ProductToBuy(Model):
             product_to_buy = ProductToBuy( owner = product_params['owner'],
                     product_name = product_params['productname'],
                     broad_type = product_params['broadtype'],
+                    trade_type = product_params['tradetype'],
                     sub_type = product_params['subtype'],
                     release_time = product_params['releasetime'],
                     )
@@ -116,11 +129,8 @@ class ProductToBuy(Model):
             return None
 
     @classmethod
-    def delete_product_to_buy(cls, nid):
-        try:
-            product = cls.objects.get(nid = nid)
-        except:
-            return None
+    def latest_product_to_show(cls):
+        return cls.objects.order_by('release_time').all()
         
     @classmethod
     def by_nid(cls, nid):
@@ -129,6 +139,13 @@ class ProductToBuy(Model):
         except:
             return None
         return product
+    
+    @classmethod
+    def delete_product_to_buy(cls, nid):
+        try:
+            cls.objects.get(nid = nid).delete()
+        except:
+            return None
 
     @classmethod
     def add_comment(cls, nid, comment):

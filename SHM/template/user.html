@@ -134,85 +134,39 @@
             <div class = 'span12' style = 'border:0px solid #ddd;margin-top:30px;'>
                 <div class = 'span7'>
                     <div class = 'span7 menu'>
-                        <span><a href='/release'>发布二手</a></span>
-                        <span><a href='/release'>发布求购</a></span>
+					{{user.nick_name}}
+						<span><a href='/user/{{user.nid}}/release'>最新出售信息</a></span>
+						<span><a href='/user/{{user.nid}}/require'>最新求购信息</a></span>
                     </div>
-                    <div class = 'span7 pro-list'>
-                        <div class = 'span6'  style='margin-top:20px;'>
-                        <div class = 'span1' style='width:40px;'>
-                            <img src = '/site_media/img/av.jpg'>
-                        </div>
-                        <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
-                            <div class = 'span5'>
-                                <span> Aron 发布物品:</span></div>
-                            <div class = 'span5' style = 'margin-left:30px;'>
-                                <div class = 'span2'>
-                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
-                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
-                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
-                                </div>
-                                <div class = 'span2'>
-                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
-                                        <img src='/site_media/img/pro1.jpg'>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class ='span5 pro-infor'>
-                                2013-11-20 20:20:30
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class = 'span6' style='margin-top:20px;'>
-                        <div class = 'span1' style='width:40px;'>
-                            <img src = '/site_media/img/av.jpg'>
-                        </div>
-                        <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
-                            <div class = 'span5'>
-                                <span> Aron 发布物品:</span></div>
-                            <div class = 'span5 pro-infor'>
-                                <div class = 'span2'>
-                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
-                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
-                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
-                                </div>
-                                <div class = 'span2'>
-                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
-                                        <img src='/site_media/img/pro1.jpg'>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class ='span5 pro-infor'>
-                                2013-11-20 20:20:30
-                            </div>
-                        </div>
-                    </div>
-
+					
+					{% for item in products %}
                     <div class = 'span6'  style='margin-top:20px;'>
                         <div class = 'span1' style='width:40px;'>
                             <img src = '/site_media/img/av.jpg'>
                         </div>
                         <div class = 'span5' style='margin-left:0px;font-size:12px;border-bottom:1px solid #ddd;'>
                             <div class = 'span5 pro-infor'>
-                                <span> Aron 发布物品:</span></div>
+                                <span> {{ item.owner.nick_name }} 发布/求购物品:</span></div>
                             <div class = 'span5 pro-infor'>
                                 <div class = 'span2'>
-                                    <p style='font-size:14px;'><a href='/product/nid'>天鹅牌洗衣机</a></p>
-                                    <p style='line-height:12px;'>￥25.00 / 家具 </p>
-                                    <p> 吸血鬼假牙的后面是个涡槽，卡在自己的牙上，在此之前将胶抹在涡槽上半部分。粘之前要将自己的牙齿清理干净。还有注意胶的正确使用方法。</p>
+                                    <p style='font-size:14px;'><a href='/product/nid'>{{item.product_name}}</a></p>
+                                    <p style='line-height:12px;'>￥{{item.price}} / {{item.broad_type}} </p>
+                                    <p> {{ item.trade_type }}</p>
                                 </div>
                                 <div class = 'span2'>
-                                    <div style='width:300px;height:200px;border:0px solid #ddd;'>
-                                        <img src='/site_media/img/pro1.jpg'>
+                                    <div style='width:200px;height:200px;border:0px solid #ddd;'>
+                                        <img src='/upload/{{item.small_img.url}}'>
                                     </div>
                                 </div>
                             </div>
                             <div class ='span5 pro-infor'>
-                                2013-11-20 20:20:30
+                                {{item.release_time}}
                             </div>
                         </div>
                         </div>
                     </div>
+					{% endfor %}
+					
                 </div>
                 <div class = 'span3 well' style='width:300px;height:400px;'>
                     广告曲
